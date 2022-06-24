@@ -1,4 +1,6 @@
 # My Fit Application
+
+### Overview
 This is the backend for a Workout Tracker App created for Flatiron School to show case skills in ruby and active record 
 
 ### Requirements 
