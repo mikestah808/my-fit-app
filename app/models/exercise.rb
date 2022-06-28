@@ -1,4 +1,4 @@
 class Exercise < ActiveRecord::Base
-    belongs_to :workouts
-    belongs_to :users
+    belongs_to :user
+    belongs_to :workout
 end
