@@ -21,5 +21,11 @@ class WorkoutsController < ApplicationController
       level: params[:level]
     )
   end
+
+  delete "/workouts/:id" do 
+    workout = Workout.find(params[:id])
+    workout.destroy
+    workout.to_json
+  end
     
 end
