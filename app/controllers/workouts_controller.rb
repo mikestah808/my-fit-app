@@ -1,5 +1,7 @@
 class WorkoutsController < ApplicationController
 
+  # WORKOUT CONTROLLER FULL CRUD 
+
     # add routes here
    
      # get all workouts 
@@ -10,7 +12,7 @@ class WorkoutsController < ApplicationController
 
   # get specific workout
   get "/workouts/:id" do 
-    workout = Workout.find(params[:id])
+    workout = Workout.find_by(id: params[:id])
     workout.to_json
   end
 
@@ -20,12 +22,15 @@ class WorkoutsController < ApplicationController
       date: params[:date],
       level: params[:level]
     )
+    workout.to_json
   end
 
   delete "/workouts/:id" do 
-    workout = Workout.find(params[:id])
+    # find_by returns null OR the found object
+    workout = Workout.find_by(id: params[:id])
     workout.destroy
-    workout.to_json
   end
+
+  # create a patch request which will modify the original form input values
     
 end
