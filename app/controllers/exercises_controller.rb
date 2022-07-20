@@ -5,7 +5,7 @@ class ExercisesController < ApplicationController
         # get all exercises
   get "/exercises" do 
     exercise = Exercise.all
-    exercise.to_json
+    exercise.to_json(include: [:workout])
   end
 
   get "/exercises/:id" do 
@@ -13,14 +13,13 @@ class ExercisesController < ApplicationController
     exercise.to_json
   end
 
-  post 'exercises' do 
+  post '/exercises' do 
     exercise = Exercise.create(
       name: params[:name],
       primary_muscle: params[:primary_muscle],
       category: params[:category],
       sets: params[:sets],
       reps: params[:reps],
-      user_id: params[:user_id],
       workout_id: params[:workout_id]
       )
     exercise.to_json
@@ -35,7 +34,6 @@ class ExercisesController < ApplicationController
       category: params[:category],
       sets: params[:sets],
       reps: params[:reps],
-      user_id: params[:user_id],
       workout_id: params[:workout_id]
     )
     exercise.to_json
@@ -43,11 +41,10 @@ class ExercisesController < ApplicationController
 
   delete '/exercises/:id' do
     # find the exercise using the ID
-    exercise = Exercise.find(params[:id])
+    exercise = Exercise.find_by(id: params[:id])
     # delete the exercise
     exercise.destroy
     # send a response with the deleted exercise as JSON
-    exercise.to_json
   end
 
 end

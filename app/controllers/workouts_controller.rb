@@ -7,14 +7,24 @@ class WorkoutsController < ApplicationController
      # get all workouts 
   get "/workouts" do 
     workout = Workout.all
-    workout.to_json
+    workout.to_json(include: :exercises)
   end
 
   # get specific workout
+
   get "/workouts/:id" do 
     workout = Workout.find_by(id: params[:id])
-    workout.to_json
+    if workout
+      workout.to_json(include: :exercises)
+    else 
+      "404 - Workout not found" 
+    end
   end
+
+  # get "/workouts/:id/exercises" do
+  #   workout = Workout.find_by(id: params[:id])
+  #   workout.to_json(include: :exercises)
+  # end
 
   post "/workouts" do 
     workout = Workout.create(
@@ -32,5 +42,14 @@ class WorkoutsController < ApplicationController
   end
 
   # create a patch request which will modify the original form input values
-    
+    patch "/workouts/:id" do 
+      workout = Workout.find_by(id: params[:id])
+      workout.update(
+        title: params[:title],
+        date: params[:date],
+        level: params[:level]
+      )
+      workout.to_json
+    end  
+
 end
