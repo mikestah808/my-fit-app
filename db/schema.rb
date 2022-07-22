@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_27_220439) do
+ActiveRecord::Schema.define(version: 2022_07_22_200853) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
-    t.string "primary_muscle"
     t.string "category"
     t.integer "sets"
     t.integer "reps"
@@ -23,7 +22,6 @@ ActiveRecord::Schema.define(version: 2022_06_27_220439) do
 
   create_table "workouts", force: :cascade do |t|
     t.string "title"
-    t.datetime "date"
     t.string "level"
   end
 

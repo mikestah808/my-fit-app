@@ -29,7 +29,6 @@ class WorkoutsController < ApplicationController
   post "/workouts" do 
     workout = Workout.create(
       title: params[:title],
-      date: params[:date],
       level: params[:level]
     )
     workout.to_json
@@ -46,7 +45,6 @@ class WorkoutsController < ApplicationController
       workout = Workout.find_by(id: params[:id])
       workout.update(
         title: params[:title],
-        date: params[:date],
         level: params[:level]
       )
       workout.to_json
