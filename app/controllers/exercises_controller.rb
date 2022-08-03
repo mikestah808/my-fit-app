@@ -25,6 +25,10 @@ class ExercisesController < ApplicationController
   end
 
 
+  # how did i get the backend to persist?
+  # workout_id value is NULL when value should be equal to ID of WORKOUT 
+
+
   delete '/exercises/:id' do
     # find the exercise using the ID
     exercise = Exercise.find_by(id: params[:id])

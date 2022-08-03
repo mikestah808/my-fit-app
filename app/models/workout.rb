@@ -17,7 +17,7 @@ class Workout < ActiveRecord::Base
     end
 
     def all_exercise_names
-        # return an array of strings containing every musician's name
+        # return an array of strings containing every exercises name
         self.exercises.map do |exercise|
           exercise.name
         end
