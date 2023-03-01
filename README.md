@@ -14,6 +14,10 @@ run rake db:migrate db:seed
 run rake server 
 if you haven't already, follow directions from frontend [url here] 
 
+## Video Demo Link 
+
+https://youtu.be/flraTNVwACU
+
 ### Licensing (MIT)
 
 Copyright (c) 2022
