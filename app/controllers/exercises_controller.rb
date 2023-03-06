@@ -2,7 +2,6 @@ class ExercisesController < ApplicationController
 
     # add routes here
 
-        # get all exercises
   get "/exercises" do 
     exercise = Exercise.all
     exercise.to_json(include: [:workout])
@@ -21,20 +20,13 @@ class ExercisesController < ApplicationController
       reps: params[:reps],
       workout_id: params[:workout_id]
       )
-    exercise.to_json
+      exercise.to_json
   end
 
 
-  # how did i get the backend to persist?
-  # workout_id value is NULL when value should be equal to ID of WORKOUT 
-
-
   delete '/exercises/:id' do
-    # find the exercise using the ID
     exercise = Exercise.find_by(id: params[:id])
-    # delete the exercise
     exercise.destroy
-    # send a response with the deleted exercise as JSON
   end
 
 end
